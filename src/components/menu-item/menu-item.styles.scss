@@ -7,17 +7,21 @@
   justify-content: center;
   border: 1px solid black;
   margin: 0 7.5px 15px;
+  //overflow hidden when transitioning to scale 1.1
   overflow: hidden;
 
   &:hover {
     cursor: pointer;
 
     & .background-image {
+      // on hover make background image scale 1.1, make bigger
       transform: scale(1.1);
+      // When scaling to 1.1, make it 6 seconds and cubic-bezier effect
       transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     }
 
     & .content {
+      // on hover change content opacity
       opacity: 0.9;
     }
   }
