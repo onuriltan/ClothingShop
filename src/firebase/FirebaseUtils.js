@@ -26,7 +26,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       console.error('Error creating user: ', e.message)
     }
   }
-  console.log(snapShot)
   return userRef
 
 }
