@@ -3,7 +3,7 @@ import './sing_in.scss'
 import FormInput from '../form-input/FormInput'
 import CustomButton from '../custom-button/CustomButton'
 
-import { signInWithGoogle} from '../../firebase/FirebaseUtils'
+import { signInWithGoogle } from '../../firebase/FirebaseUtils'
 
 class SignIn extends Component {
 
