@@ -1,7 +1,7 @@
 import React from 'react';
-import './sign-in-and-sign-up.styles.scss'
+import './sign_in_and_sign_up.scss'
 
-import SignIn from '../../components/sign-in/sign-in.component'
+import SignIn from '../../components/sign-in/SignIn'
 
 const SignInUp = () => {
   return (

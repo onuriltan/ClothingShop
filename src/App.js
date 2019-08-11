@@ -3,10 +3,10 @@ import './App.css';
 
 import {Switch, Route} from 'react-router-dom'
 
-import HomePage from './pages/home/home.page'
-import ShopPage from './pages/shop/shop.page'
-import Header from './components/header/header.component'
-import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.page'
+import HomePage from './pages/home/HomePage'
+import ShopPage from './pages/shop/ShopPage'
+import Header from './components/header/Header'
+import SignInAndSignUp from './pages/sign-in-and-sign-up/SignInandSignUp'
 
 function App() {
   return (
