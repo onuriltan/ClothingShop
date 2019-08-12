@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import './App.css'
 import PropTypes from 'prop-types'
 
@@ -37,7 +37,11 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
-          <Route path='/sign-in' component={SignInAndSignUp} />
+          <Route exact path='/sign-in' render={() =>
+            this.props.currentUser
+              ? (<Redirect to='/' />)
+              : (<SignInAndSignUp />)
+          } />
         </Switch>
       </>
     )
@@ -45,11 +49,16 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  setCurrentUser: PropTypes.func.isRequired
+  setCurrentUser: PropTypes.func.isRequired,
+  currentUser: PropTypes.object
 }
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 })
 
-export default connect(null, mapDispatchToProps)(App)
+const mapStateToProps = rootReducer => ({
+  currentUser: rootReducer.user.currentUser
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
