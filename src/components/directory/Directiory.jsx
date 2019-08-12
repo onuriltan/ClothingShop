@@ -1,12 +1,11 @@
-import React from 'react';
+import React from 'react'
 import './directory.scss'
 
 import MenuItem from '../menu-item/MenuItem'
 
 class Directory extends React.Component {
-
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       sections: [
@@ -46,8 +45,8 @@ class Directory extends React.Component {
     }
   }
 
-  render() {
-    const {sections} = this.state;
+  render () {
+    const {sections} = this.state
     return (
       <div className='directory-menu'>
         {sections && sections.map(({id, ...otherSectionProps}) => {
@@ -58,5 +57,4 @@ class Directory extends React.Component {
   }
 }
 
-
-export default Directory;
+export default Directory
