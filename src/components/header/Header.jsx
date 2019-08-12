@@ -1,8 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './header.scss'
 import { Link } from 'react-router-dom'
 import { ReactComponent as Logo } from '../../assets/crown.svg'
 import { auth } from '../../firebase/FirebaseUtils'
+import { connect } from 'react-redux'
 
 const Header = ({ currentUser }) => {
   return (
@@ -26,4 +28,13 @@ const Header = ({ currentUser }) => {
     </div>
   )
 }
-export default Header
+
+Header.propTypes = {
+  currentUser: PropTypes.object
+}
+
+const mapStateToProps = rootReducer => ({
+  currentUser: rootReducer.user.currentUser
+})
+
+export default connect(mapStateToProps)(Header)
