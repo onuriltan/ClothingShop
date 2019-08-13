@@ -1,8 +1,8 @@
 import React from 'react'
-import './card_icon.scss'
+import './cart_icon.scss'
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg'
 
-const CardIcon = () => {
+const CartIcon = () => {
   return (
     <div className='cart-icon'>
       <ShoppingIcon className='shopping-icon' />
@@ -10,4 +10,4 @@ const CardIcon = () => {
     </div>
   )
 }
-export default CardIcon
+export default CartIcon
