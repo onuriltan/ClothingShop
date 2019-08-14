@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './collection_item.scss'
+import { connect } from 'react-redux'
+import { addItemToCart } from '../../redux/actions/cart.actions'
 import CustomButton from '../custom-button/CustomButton'
 
-const CollectionItem = ({ name, price, imageUrl }) => {
+const CollectionItem = ({ item, addItemToCart }) => {
+  const { imageUrl, name, price } = item
   return (
     <div className='collection-item'>
       <div className='image' style={{backgroundImage: `url(${imageUrl})`}} />
@@ -11,14 +14,17 @@ const CollectionItem = ({ name, price, imageUrl }) => {
         <span className='name'>{name}</span>
         <span className='price'>{price}</span>
       </div>
-      <CustomButton isShoppingCart>ADD TO CART</CustomButton>
+      <CustomButton isShoppingCart onClick={() => addItemToCart(item)}>ADD TO CART</CustomButton>
     </div>
   )
 }
 CollectionItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  imageUrl: PropTypes.string.isRequired
+  item: PropTypes.object.isRequired,
+  addItemToCart: PropTypes.func
 }
 
-export default CollectionItem
+const mapDispatchToProps = dispatch => ({
+  addItemToCart: item => dispatch(addItemToCart(item))
+})
+
+export default connect(null, mapDispatchToProps)(CollectionItem)
