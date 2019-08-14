@@ -3,10 +3,11 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import './App.css'
 import PropTypes from 'prop-types'
 
+import Header from './components/header/Header'
 import HomePage from './pages/home/HomePage'
 import ShopPage from './pages/shop/ShopPage'
-import Header from './components/header/Header'
-import SignInAndSignUp from './pages/sign-in-and-sign-up/SignInandSignUp'
+import SignInAndSignUp from './pages/sign-in-and-sign-up/SignInandSignUpPage'
+import CheckoutPage from './pages/checkout/CheckoutPage'
 
 import { auth, createUserProfileDocument } from './firebase/FirebaseUtils'
 import { connect } from 'react-redux'
@@ -44,6 +45,8 @@ class App extends React.Component {
               ? (<Redirect to='/' />)
               : (<SignInAndSignUp />)
           } />
+          <Route exact path='/checkout' component={CheckoutPage} />
+
         </Switch>
       </>
     )
