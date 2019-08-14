@@ -1,5 +1,5 @@
 {
-  "name": "crwn-clothing",
+  "name": "clothing-shop",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:fix": "eslint src/**/*.js||*.scss --fix"
+    "lint:fix": "eslint src/**/*.js||src/**/*.scss --fix"
   },
   "husky": {
     "hooks": {
