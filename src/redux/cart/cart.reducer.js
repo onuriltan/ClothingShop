@@ -1,4 +1,4 @@
-import { TOGGLE_CART_HIDDEN, ADD_ITEM_TO_CART } from '../actions/cart.types'
+import { TOGGLE_CART_HIDDEN, ADD_ITEM_TO_CART } from './cart.types'
 import { combineSameItems } from '../../utils'
 const INITIAL_STATE = {
   hidden: true,
