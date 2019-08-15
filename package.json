@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:fix": "eslint src/**/*.js||src/**/*.scss --fix"
+    "lint:fix": "eslint src/**/*.js||src/**/*.jsx||src/**/*.scss --fix"
   },
   "husky": {
     "hooks": {
