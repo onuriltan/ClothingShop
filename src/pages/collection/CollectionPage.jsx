@@ -1,10 +1,13 @@
 import React from 'react'
 import './collection_page.scss'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import { selectCollection } from '../../redux/shop/shop.selectors'
 import CollectionItem from '../../components/collection-item/CollectionItem'
 
-const CollectionPage = ({match}) => {
-  console.log(match)
+const CollectionPage = ({ collection }) => {
+  console.log(collection)
   return (
     <div className='collection-page'>
       <h2>Collection Page</h2>
@@ -12,7 +15,10 @@ const CollectionPage = ({match}) => {
   )
 }
 CollectionPage.propTypes = {
-  match: PropTypes.object.isRequired
+  collection: PropTypes.array.isRequired
 }
+const mapStateToProps = (state, ownProps) => ({
+  collection: selectCollection(ownProps.match.params.collectionName)(state)
+})
 
-export default CollectionPage
+export default connect(mapStateToProps)(CollectionPage)
