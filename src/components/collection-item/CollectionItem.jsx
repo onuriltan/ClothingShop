@@ -20,7 +20,7 @@ const CollectionItem = ({ item, addItemToCart }) => {
 }
 CollectionItem.propTypes = {
   item: PropTypes.object.isRequired,
-  addItemToCart: PropTypes.func
+  addItemToCart: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => ({
