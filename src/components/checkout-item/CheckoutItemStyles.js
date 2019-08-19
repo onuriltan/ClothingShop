@@ -19,10 +19,6 @@ export const CheckoutImageContainer = styled.div`
   }
 `
 
-export const CheckoutItemDetails = styled.span`
-  width: 23%;
-`
-
 export const TextContainer = styled.span`
   width: 23%;
 `
