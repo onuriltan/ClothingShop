@@ -1,13 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './custom_button.scss'
+import { CustomButtonContainer } from './CustomButtonStyles'
 
-const CustomButton = ({ children, isGoogleSignIn, isShoppingCart, ...otherProps }) => {
+const CustomButton = ({ children, isGoogleSignIn, isShoppingCart, isShoppingItem }) => {
   return (
-    <button className={`${isShoppingCart ? 'shopping-cart' : ''} ${isGoogleSignIn ? 'google-sign-in' : ''} custom-button`}
-      {...otherProps}>
+    <CustomButtonContainer isShoppingCart={isShoppingCart} isGoogleSignIn={isGoogleSignIn} isShoppingItem={isShoppingItem}>
       {children}
-    </button>
+    </CustomButtonContainer>
   )
 }
 CustomButton.propTypes = {
