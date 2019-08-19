@@ -16,6 +16,8 @@ const ShoppingCartButtonStyles = css`
   background-color: white;
   color: black;
   border: 1px solid black;
+  position: absolute;
+  top: 250px;
 
   &:hover {
     background-color: black;
