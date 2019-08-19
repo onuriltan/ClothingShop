@@ -20,7 +20,6 @@ const ShoppingCartButtonStyles = css`
   &:hover {
     background-color: black;
     color: white;
-    border: white;
     border: none;
   }
 `
@@ -28,8 +27,10 @@ const ShoppingCartButtonStyles = css`
 const GoogleSignInButtonStyles = css`
   background-color: #4285f4;
   color: white;
+
   &:hover {
     background-color: #357ae8;
+    border: none;
   }
 `
 
@@ -50,8 +51,9 @@ export const CustomButtonContainer = styled.button`
   letter-spacing: 0.5px;
   line-height: 50px;
   padding: 0 35px 0 35px;
-  font-size: 12px;
+  font-size: 15px;
   text-transform: uppercase;
+  outline: none;
   font-weight: bolder;
   cursor: pointer;
   display: flex;
