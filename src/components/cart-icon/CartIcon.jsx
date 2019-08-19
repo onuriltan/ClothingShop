@@ -1,18 +1,18 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { toggleCartHidden } from '../../redux/cart/cart.actions'
 import { selectCartItemsCount } from '../../redux/cart/cart.selectors'
 import { createStructuredSelector } from 'reselect'
-import './cart_icon.scss'
-import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg'
+
+import { CartIconContainer, ShoppingIconContainer, ItemCountContainer } from './CartIconStyles'
 
 const CartIcon = ({ toggleCartHidden, itemCount }) => {
   return (
-    <div className='cart-icon' onClick={toggleCartHidden}>
-      <ShoppingIcon className='shopping-icon' />
-      <span className='item-count'>{itemCount}</span>
-    </div>
+    <CartIconContainer onClick={toggleCartHidden}>
+      <ShoppingIconContainer />
+      <ItemCountContainer>{itemCount}</ItemCountContainer>
+    </CartIconContainer>
   )
 }
 CartIcon.propTypes = {
