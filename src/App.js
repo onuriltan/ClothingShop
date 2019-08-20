@@ -17,9 +17,13 @@ import { selectCartItemsCount } from './redux/cart/cart.selectors'
 import { createStructuredSelector } from 'reselect'
 
 class App extends React.Component {
+  // firebase onAuthStateChanged is an observable so hold observable value here
+  // and unsubscribe when component unmounts
+  unsubscribeFromAuth = null
+
   componentDidMount () {
     const { setCurrentUser } = this.props
-    auth.onAuthStateChanged(async userAuth => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth)
         userRef.onSnapshot(snapshot => {
@@ -32,6 +36,10 @@ class App extends React.Component {
         setCurrentUser(userAuth)
       }
     })
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth = null
   }
 
   render () {
