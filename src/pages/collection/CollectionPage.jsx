@@ -22,7 +22,7 @@ const CollectionPage = ({ collection }) => {
   )
 }
 CollectionPage.propTypes = {
-  collection: PropTypes.object.isRequired
+  collection: PropTypes.object
 }
 const mapStateToProps = (state, ownProps) => ({
   collection: selectCollection(ownProps.match.params.collectionName)(state)

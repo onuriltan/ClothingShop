@@ -13,8 +13,7 @@ const WithSpinner = WrappedComponent => {
       : <WrappedComponent {...componentProps} />
   }
   Spinner.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-    componentProps: PropTypes.object.isRequired
+    isLoading: PropTypes.bool.isRequired
   }
   return Spinner
 }
