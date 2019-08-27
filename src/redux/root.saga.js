@@ -3,6 +3,6 @@ import { shopSagas } from './shop/shop.sagas'
 
 export default function* rootSaga () {
   yield all([
-    shopSagas
+    ...shopSagas
   ])
 }

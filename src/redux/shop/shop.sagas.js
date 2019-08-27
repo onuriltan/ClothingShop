@@ -1,4 +1,4 @@
-import { takeLatest, takeEvery, call, put, all } from 'redux-saga/effects'
+import { takeEvery, call, put, all } from 'redux-saga/effects'
 import {
   FETCH_COLLECTIONS_START
 }
@@ -16,7 +16,7 @@ function* fetchCollectionsAsync () {
     // call içine aldığı metodu invoke eden bir function
     // convertCollectionsSnapshotToMap metodunu yield ederek call'un timeout süresini belirleyip iptal edebiliriz
     // gibi olanaklar sağlıyor
-    const collectionsMap = yield call(convertCollectionsSnapshotToMap(snapshot))
+    const collectionsMap = yield call(convertCollectionsSnapshotToMap, snapshot)
     // put dispatchin aynısı, saga'da call olarak geçiyor
     yield put(fetchCollectionsSuccess(collectionsMap))
   } catch (error) {
@@ -27,13 +27,6 @@ function* fetchCollectionsAsync () {
 // application does not pause from other saga fucntions running
 // Ayrıca cencel da edebiliriz sagaları, mesela fetchCollectionsStart yeniden çalıştı ama
 // önceki devam ediyor, önceki çalışanı iptal edebiliriz
-
-function* fetchCollections () {
-  yield takeEvery(FETCH_COLLECTIONS_START, fetchCollectionsAsync)
-}
-
-export function* shopSagas () {
-  yield all([
-    takeLatest(FETCH_COLLECTIONS_START, fetchCollections)
-  ])
-}
+export const shopSagas = [
+  takeEvery(FETCH_COLLECTIONS_START, fetchCollectionsAsync)
+]

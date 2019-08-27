@@ -49,7 +49,6 @@ export const convertCollectionsSnapshotToMap = collections => {
 // add item collections or whatever you want
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
   const collectionRef = firestore.collection(collectionKey)
-  console.log(collectionRef)
   // batch all calls so if one fails all of them fails
   // so it will save us from inconsistencies
   const batch = firestore.batch()
