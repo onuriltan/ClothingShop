@@ -1,4 +1,4 @@
-import { takeEvery, call, put, all } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 import {
   FETCH_COLLECTIONS_START
 }
@@ -28,5 +28,5 @@ function* fetchCollectionsAsync () {
 // Ayrıca cencel da edebiliriz sagaları, mesela fetchCollectionsStart yeniden çalıştı ama
 // önceki devam ediyor, önceki çalışanı iptal edebiliriz
 export const shopSagas = [
-  takeEvery(FETCH_COLLECTIONS_START, fetchCollectionsAsync)
+  takeLatest(FETCH_COLLECTIONS_START, fetchCollectionsAsync)
 ]

@@ -4,7 +4,6 @@ import { persistStore } from 'redux-persist'
 import rootReducer from './root.reducer'
 import rootSaga from './root.saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { fetchCollections } from './shop/shop.sagas'
 
 const sagaMiddleware = createSagaMiddleware()
 
