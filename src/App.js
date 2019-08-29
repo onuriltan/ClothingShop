@@ -13,8 +13,14 @@ import { connect } from 'react-redux'
 import { selectCurrentUser } from './redux/user/user.selector'
 import { selectCartItemsCount } from './redux/cart/cart.selectors'
 import { createStructuredSelector } from 'reselect'
+import { checkIsUserIsAuthenticated } from './redux/user/user.actions'
 
 class App extends React.Component {
+  componentDidMount () {
+    const { checkIsUserIsAuthenticated } = this.props
+    checkIsUserIsAuthenticated()
+  }
+
   render () {
     return (
       <>
@@ -39,13 +45,18 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  checkIsUserIsAuthenticated: PropTypes.func.isRequired,
   currentUser: PropTypes.object,
   cartItemsCount: PropTypes.number.isRequired
 }
+
+const mapDispatchToProps = dispatch => ({
+  checkIsUserIsAuthenticated: () => dispatch(checkIsUserIsAuthenticated())
+})
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   cartItemsCount: selectCartItemsCount
 })
 
-export default connect(mapStateToProps, null)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

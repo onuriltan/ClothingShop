@@ -2,7 +2,7 @@ import {
   GOOGLE_SIGN_IN_START,
   SIGN_IN_SUCCESS,
   SIGN_IN_FAILURE,
-  EMAIL_SIGN_IN_START
+  EMAIL_SIGN_IN_START, CHECK_USER_AUTHENTICATED
 } from './user.types'
 
 export const googleSignInStart = () => ({
@@ -22,4 +22,8 @@ export const signInSuccess = user => ({
 export const signInFailure = error => ({
   type: SIGN_IN_FAILURE,
   payload: error
+})
+
+export const checkIsUserIsAuthenticated = () => ({
+  type: CHECK_USER_AUTHENTICATED
 })
