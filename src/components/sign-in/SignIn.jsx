@@ -4,13 +4,13 @@ import { connect } from "react-redux";
 import FormInput from '../form-input/FormInput'
 import CustomButton from '../custom-button/CustomButton'
 
-import { googleSignInStart } from "../../redux/user/user.actions";
+import { googleSignInStart, emailSignInStart } from "../../redux/user/user.actions";
 
 class SignIn extends Component {
 
   constructor(props) {
     super(props)
-    this.state= {
+    this.state = {
       email: '',
       password: ''
     }
@@ -18,7 +18,9 @@ class SignIn extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.setState({ email: '', password: ''})
+    const { emailSignInStart } = this.props
+    const { email, password } = this.state
+    emailSignInStart(email, password)
   }
 
   handleChange = event => {
@@ -53,7 +55,8 @@ class SignIn extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  googleSignInStart: () => dispatch(googleSignInStart())
+  googleSignInStart: () => dispatch(googleSignInStart()),
+  emailSignInStart: (email, password) => dispatch(emailSignInStart({ email, password}))
 })
 
 export default connect(null, mapDispatchToProps)(SignIn);
