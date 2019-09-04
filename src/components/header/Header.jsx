@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ReactComponent as Logo } from '../../assets/crown.svg'
-import { auth } from '../../firebase/FirebaseUtils'
 import { connect } from 'react-redux'
 import { selectCartHidden } from '../../redux/cart/cart.selectors'
 import { selectCurrentUser } from '../../redux/user/user.selector'
