@@ -4,7 +4,8 @@ import './sign_up.scss'
 import FormInput from '../form-input/FormInput'
 import CustomButton from '../custom-button/CustomButton'
 
-import { auth, createUserProfileDocument } from "../../firebase/FirebaseUtils";
+import { signUpStart } from "../../redux/user/user.actions";
+import { connect } from "react-redux";
 
 class SignUp extends Component {
 
@@ -25,8 +26,7 @@ class SignUp extends Component {
       return
     }
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
-      await createUserProfileDocument(user)
+      await this.props.signUpStart(this.state)
       this.setState({ displayName: '', email: '', password: '', confirmPassword: '' })
     } catch (e) {
       console.error(e)
@@ -65,4 +65,8 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+const mapDispatchToProps = dispatch => ({
+  signUpStart: userCredentials => dispatch(signUpStart(userCredentials)),
+})
+
+export default connect(null, mapDispatchToProps)(SignUp);

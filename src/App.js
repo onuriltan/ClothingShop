@@ -9,37 +9,16 @@ import ShopPage from './pages/shop/ShopPage'
 import SignInAndSignUp from './pages/sign-in-and-sign-up/SignInandSignUpPage'
 import CheckoutPage from './pages/checkout/CheckoutPage'
 
-import { auth, createUserProfileDocument } from './firebase/FirebaseUtils'
 import { connect } from 'react-redux'
-import { setCurrentUser } from './redux/user/user.actions'
 import { selectCurrentUser } from './redux/user/user.selector'
 import { selectCartItemsCount } from './redux/cart/cart.selectors'
 import { createStructuredSelector } from 'reselect'
+import { checkIsUserIsAuthenticated } from './redux/user/user.actions'
 
 class App extends React.Component {
-  // firebase onAuthStateChanged is an observable so hold observable value here
-  // and unsubscribe when component unmounts
-  unsubscribeFromAuth = null
-
   componentDidMount () {
-    const { setCurrentUser } = this.props
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth)
-        userRef.onSnapshot(snapshot => {
-          setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data()
-          })
-        })
-      } else {
-        setCurrentUser(userAuth)
-      }
-    })
-  }
-
-  componentWillUnmount() {
-    this.unsubscribeFromAuth = null
+    const { checkIsUserIsAuthenticated } = this.props
+    checkIsUserIsAuthenticated()
   }
 
   render () {
@@ -66,13 +45,13 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  setCurrentUser: PropTypes.func.isRequired,
+  checkIsUserIsAuthenticated: PropTypes.func.isRequired,
   currentUser: PropTypes.object,
   cartItemsCount: PropTypes.number.isRequired
 }
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+  checkIsUserIsAuthenticated: () => dispatch(checkIsUserIsAuthenticated())
 })
 
 const mapStateToProps = createStructuredSelector({

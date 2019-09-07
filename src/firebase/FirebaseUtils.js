@@ -49,7 +49,6 @@ export const convertCollectionsSnapshotToMap = collections => {
 // add item collections or whatever you want
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
   const collectionRef = firestore.collection(collectionKey)
-  console.log(collectionRef)
   // batch all calls so if one fails all of them fails
   // so it will save us from inconsistencies
   const batch = firestore.batch()
@@ -67,8 +66,7 @@ firebase.initializeApp(config)
 export const auth = firebase.auth()
 export const firestore = firebase.firestore()
 
-const googleProvider = new firebase.auth.GoogleAuthProvider()
+export const googleProvider = new firebase.auth.GoogleAuthProvider()
 // trigger google auth popup whenever we use this provider variable
 googleProvider.setCustomParameters({ prompt: 'select_account' })
-export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
 
