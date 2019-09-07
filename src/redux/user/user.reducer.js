@@ -2,7 +2,7 @@ import {
   GOOGLE_SIGN_IN_START,
   SIGN_IN_SUCCESS,
   SIGN_IN_FAILURE,
-  EMAIL_SIGN_IN_START, SIGN_OUT_FAILURE, SIGN_OUT_SUCCESS
+  EMAIL_SIGN_IN_START, SIGN_OUT_FAILURE, SIGN_OUT_SUCCESS, SIGN_UP_FAILURE
 } from './user.types'
 
 const INITIAL_STATE = {
@@ -35,6 +35,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
 
     case SIGN_IN_FAILURE:
     case SIGN_OUT_FAILURE:
+    case SIGN_UP_FAILURE:
       return {
         ...state, error: action.payload
       }
