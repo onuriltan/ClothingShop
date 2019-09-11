@@ -1,5 +1,4 @@
 import React from 'react'
-import './checkout_page.scss'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
@@ -7,39 +6,50 @@ import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selector
 import CheckoutItem from '../../components/checkout-item/CheckoutItem'
 import PaymentButton from '../../components/payment-button/PaymentButton'
 
+import {
+  CheckoutPageContainer,
+  CheckoutHeader,
+  HeaderBlock,
+  ButtonContainer,
+  Total,
+  Warning
+} from './CheckoutPageStyles'
+
 const CheckoutPage = ({ cartItems, totalPrice }) => {
   return (
-    <div className='checkout-page'>
-      <div className='checkout-header'>
-        <div className='header-block'>
+    <CheckoutPageContainer>
+      <CheckoutHeader>
+        <HeaderBlock>
           <span>Product</span>
-        </div>
-        <div className='header-block'>
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Description</span>
-        </div>
-        <div className='header-block'>
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Quantity</span>
-        </div>
-        <div className='header-block'>
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Price</span>
-        </div>
-        <div className='header-block'>
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Remove</span>
-        </div>
-      </div>
+        </HeaderBlock>
+      </CheckoutHeader>
       {
         cartItems.map(cartItem => <CheckoutItem key={cartItem.id} cartItem={cartItem} />)
       }
-      <div className='total'>
+      <Total>
         <span>TOTAL: ${totalPrice}</span>
-      </div>
-      <div className='test-warning'>
+      </Total>
+      <Warning>
         * Please use the following test card for payments *
         <br />
         4242 4242 4242 4242 -- Expiry: 01/20 -- CVV: 123
-      </div>
-      <PaymentButton price={totalPrice} />
-    </div>
+      </Warning>
+      <ButtonContainer>
+        <PaymentButton price={totalPrice} />
+      </ButtonContainer>
+    </CheckoutPageContainer>
   )
 }
 
