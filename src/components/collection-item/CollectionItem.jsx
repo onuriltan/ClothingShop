@@ -1,21 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './collection_item.scss'
 import { connect } from 'react-redux'
 import { addItemToCart } from '../../redux/cart/cart.actions'
-import CustomButton from '../custom-button/CustomButton'
+
+import {
+  CollectionItemContainer,
+  Footer,
+  Image,
+  Name,
+  Price,
+  AddButton
+} from './CollectionItemStyles'
 
 const CollectionItem = ({ item, addItemToCart }) => {
   const { imageUrl, name, price } = item
   return (
-    <div className='collection-item'>
-      <div className='image' style={{backgroundImage: `url(${imageUrl})`}} />
-      <div className='collection-footer'>
-        <span className='name'>{name}</span>
-        <span className='price'>{price}</span>
-      </div>
-      <CustomButton isShoppingCart onClick={() => addItemToCart(item)}>ADD TO CART</CustomButton>
-    </div>
+    <CollectionItemContainer>
+      <Image imageUrl={imageUrl} />
+      <Footer>
+        <Name>{name}</Name>
+        <Price>{price}</Price>
+      </Footer>
+      <AddButton isShoppingCart onClick={() => addItemToCart(item)}>ADD TO CART</AddButton>
+    </CollectionItemContainer>
   )
 }
 CollectionItem.propTypes = {
