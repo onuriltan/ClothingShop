@@ -42,5 +42,3 @@ export const ButtonContainer = styled.div`
     margin-left: auto;
     margin-top: 50px;
 `
-
-

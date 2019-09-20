@@ -52,15 +52,12 @@ const CheckoutPage = ({ cartItems, totalPrice }) => {
     </CheckoutPageContainer>
   )
 }
-
 CheckoutPage.propTypes = {
   cartItems: PropTypes.array.isRequired,
   totalPrice: PropTypes.number.isRequired
 }
-
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
   totalPrice: selectCartTotal
 })
-
 export default connect(mapStateToProps, null)(CheckoutPage)
