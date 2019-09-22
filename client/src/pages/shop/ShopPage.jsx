@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchCollectionsStart } from '../../redux/shop/shop.actions'
-import CollectionsOverviewContainer from '../../components/collections-overview/CollectionsOverviewContainer'
-import CollectionPageContainer from '../../pages/collection/CollectionPageContainer'
+import Spinner from "../../components/spinner/Spinner";
+
+const CollectionsOverviewContainer = lazy(() => import('../../components/collections-overview/CollectionsOverviewContainer'))
+const CollectionPageContainer = lazy(() => import('../../pages/collection/CollectionPageContainer'))
 
 class ShopPage extends React.Component {
   componentDidMount () {
@@ -17,8 +19,10 @@ class ShopPage extends React.Component {
 
     return (
       <div className='shop-page'>
-        <Route exact path={`${match.path}`} component={CollectionsOverviewContainer} />
-        <Route path={`${match.path}/:collectionName`} component={CollectionPageContainer} />
+        <Suspense fallback={<Spinner/>}>
+          <Route exact path={`${match.path}`} component={CollectionsOverviewContainer} />
+          <Route path={`${match.path}/:collectionName`} component={CollectionPageContainer} />
+        </Suspense>
       </div>
     )
   }

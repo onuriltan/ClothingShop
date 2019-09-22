@@ -3,12 +3,12 @@ import CustomButton from '../custom-button/CustomButton'
 
 export const CollectionItemContainer = styled.div`
     width: 22vw;
+    margin: 0 5px 30px 5px;
     display: flex;
     flex-direction: column;
     height: 350px;
     align-items: center;
     position: relative;
-    margin-bottom: 30px;
     &:hover {
       .image {
         opacity: 0.8;
@@ -24,6 +24,7 @@ export const CollectionItemContainer = styled.div`
   @media screen and (max-width: 800px) {
       width: 100%;
       min-width: 40vw;
+      margin: 0;
       &:hover {
       .image {
         opacity: unset;
