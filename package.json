@@ -2,7 +2,7 @@
   "name": "clothing-shop-server",
   "version": "1.0.0",
   "engines": {
-    "node": "v10.16.0",
+    "node": "v12.1.0",
     "npm": "6.10.2"
   },
   "scripts": {
