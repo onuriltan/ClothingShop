@@ -5,6 +5,7 @@ import { GlobalStyle } from './GlobalStyles'
 
 import Header from './components/header/Header'
 import Spinner from './components/spinner/Spinner'
+import ErrorBoundary from './components/error-boundary/ErrorBoundary'
 
 import { connect } from 'react-redux'
 import { selectCurrentUser } from './redux/user/user.selector'
@@ -29,20 +30,22 @@ class App extends React.Component {
         <GlobalStyle/>
         <Header/>
         <Switch>
-          <Suspense fallback={<Spinner />}>
-            <Route exact path='/' component={HomePage}/>
-            <Route path='/shop' component={ShopPage}/>
-            <Route exact path='/sign-in' render={() =>
-              this.props.currentUser
-                ? (<Redirect to='/'/>)
-                : (<SignInAndSignUpPage/>)
-            }/>
-            <Route exact path='/checkout' render={() =>
-              this.props.cartItemsCount
-                ? (<CheckoutPage/>)
-                : (<Redirect to='/'/>)
-            }/>
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<Spinner />}>
+              <Route exact path='/' component={HomePage}/>
+              <Route path='/shop' component={ShopPage}/>
+              <Route exact path='/sign-in' render={() =>
+                this.props.currentUser
+                  ? (<Redirect to='/'/>)
+                  : (<SignInAndSignUpPage/>)
+              }/>
+              <Route exact path='/checkout' render={() =>
+                this.props.cartItemsCount
+                  ? (<CheckoutPage/>)
+                  : (<Redirect to='/'/>)
+              }/>
+            </Suspense>
+          </ErrorBoundary>
         </Switch>
       </>
     )

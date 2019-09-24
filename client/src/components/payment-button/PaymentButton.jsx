@@ -18,10 +18,9 @@ const PaymentButton = ({ price }) => {
     }).then(res => {
       window.alert('Payment is successful!')
     }).catch(err => {
-      console.log('Payment error: ' + JSON.parse(err))
       window.alert('Payment is unsuccessful :( Make sure you provided correct credit card info')
+      console.log('Payment error: ' + JSON.parse(err))
     })
-    console.log(token)
   }
 
   return (
